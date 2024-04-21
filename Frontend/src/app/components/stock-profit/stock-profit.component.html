@@ -1,0 +1,22 @@
+  <table class="profit-table" *ngIf="stockProfit">
+    <tr>
+      <td class="col">Total Units : {{ stockProfit.total_units }}</td>
+    </tr>
+    <tr>
+      <td class="col">Sold Amount : {{ stockProfit.sold_amount }}</td>
+    </tr>
+    <tr>
+      <td class="col">Total Investment : {{ stockProfit.total_investment }}</td>
+    </tr>
+    <tr>
+      <td class="col">Current Amount : {{ stockProfit.current_amount }}</td>
+    </tr>
+    <tr>
+      <div *ngIf="stockProfit.profit > 0; else otherwise">
+        <td class="col">Profit : {{ stockProfit.profit }}</td>
+      </div>
+      <ng-template #otherwise>
+        <td class="col">Loss : {{ -stockProfit.profit }}</td>
+      </ng-template>
+    </tr>
+  </table>

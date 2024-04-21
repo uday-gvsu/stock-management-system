@@ -1,0 +1,1 @@
+json.array! @stock_profit

@@ -1,0 +1,101 @@
+<form [formGroup]="stockDetailsForm" *ngIf="!isLoading">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Stock Name</label><br />
+      <select formControlName="stock_id" id="stock_id">
+        <option value="" selected disabled>Please select A Stock</option>
+        <option *ngFor="let s of stocks" [value]="s.id">{{ s.name }}</option>
+      </select>
+      <div
+        class="error"
+        *ngIf="
+          stockDetailsForm.controls.stock_id.touched &&
+          stockDetailsForm.controls.stock_id.errors
+        "
+      >
+        Please select a stock
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Transaction Type</label><br />
+      <select formControlName="transaction_type" id="transaction_type">
+        <option value="" selected disabled>
+          Please select a transaction Type
+        </option>
+        <option value="buy">Buy</option>
+        <option value="sell">Sell</option>
+      </select>
+      <div
+        class="error"
+        *ngIf="
+          stockDetailsForm.controls.transaction_type.touched &&
+          stockDetailsForm.controls.transaction_type.errors
+        "
+      >
+        Please select a Transaction Type
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Quantity</label>
+      <input
+        type="number"
+        class="form-control form-control-lg"
+        placeholder="Quantity"
+        formControlName="quantity"
+      />
+      <div
+        class="error"
+        *ngIf="
+          stockDetailsForm.controls.quantity.touched &&
+          stockDetailsForm.controls.quantity.errors
+        "
+      >
+        Please enter quantity
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Amount</label>
+      <input
+        type="number"
+        class="form-control form-control-lg"
+        placeholder="Amount"
+        formControlName="amount"
+      />
+      <div
+        class="error"
+        *ngIf="
+          stockDetailsForm.controls.amount.touched &&
+          stockDetailsForm.controls.amount.errors
+        "
+      >
+        Please enter amount
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Tranaction Date </label>
+      <input
+        class="form-control form-control-lg"
+        placeholder="MM/DD/YYYY"
+        type="date"
+        formControlName="transaction_date"
+      />
+      <div
+        class="error"
+        *ngIf="
+          stockDetailsForm.controls.transaction_date.touched &&
+          stockDetailsForm.controls.transaction_date.errors
+        "
+      >
+        Please select a transaction_date
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group submit-button">
+    <button class="btn btn-info btn-lg btn-block" (click)="submit()">
+      SUBMIT
+    </button>
+  </div>
+</form>
